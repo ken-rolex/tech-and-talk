@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262.1 83.3% 57.8%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+
+  .glass-effect {
+    @apply bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl;
+  }
+
+  .glass-button {
+    @apply bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/30 dark:hover:bg-white/20 transition-all duration-300;
+  }
+
+  .glow-effect {
+    @apply relative overflow-hidden;
+  }
+
+  .glow-effect::before {
+    @apply absolute inset-0 bg-gradient-to-r from-primary/50 to-purple-500/50 opacity-0 transition-opacity duration-300 rounded-md -z-10;
+    content: "";
+  }
+
+  .glow-effect:hover::before {
+    @apply opacity-100;
+  }
+
+  .glow-border {
+    @apply relative;
+  }
+
+  .glow-border::after {
+    @apply absolute inset-0 rounded-md border border-primary/50 blur-[2px] opacity-0 transition-opacity duration-300 -z-10;
+    content: "";
+  }
+
+  .glow-border:hover::after {
+    @apply opacity-100;
+  }
+
+  .nav-link {
+    @apply relative;
+  }
+
+  .nav-link::after {
+    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out;
+    content: "";
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .card-zoom {
+    @apply overflow-hidden rounded-xl;
+  }
+
+  .card-zoom-image {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  .card-zoom:hover .card-zoom-image {
+    @apply scale-110;
+  }
+
+  .floating-label-input {
+    @apply relative;
+  }
+
+  .floating-label-input input:focus + label,
+  .floating-label-input input:not(:placeholder-shown) + label {
+    @apply -translate-y-6 scale-75 text-primary;
+  }
+
+  .floating-label-input label {
+    @apply absolute left-3 top-3 transition-all duration-300 origin-left;
+  }
+
+  .wave-divider {
+    @apply w-full h-24 relative overflow-hidden;
+  }
+
+  .wave-divider svg {
+    @apply absolute bottom-0 left-0 w-full;
+  }
+
+  .neumorphic {
+    @apply bg-gray-100 dark:bg-gray-800 shadow-[5px_5px_10px_rgba(0,0,0,0.1),-5px_-5px_10px_rgba(255,255,255,0.8)] dark:shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.05)];
+  }
+
+  .neumorphic-inset {
+    @apply bg-gray-100 dark:bg-gray-800 shadow-[inset_5px_5px_10px_rgba(0,0,0,0.1),inset_-5px_-5px_10px_rgba(255,255,255,0.8)] dark:shadow-[inset_5px_5px_10px_rgba(0,0,0,0.3),inset_-5px_-5px_10px_rgba(255,255,255,0.05)];
+  }
+}
+
